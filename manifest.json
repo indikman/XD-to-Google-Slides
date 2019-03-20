@@ -1,0 +1,21 @@
+{
+    "id": "306cc855",
+    "name" : "XD to Google Slides",
+    "version" : "0.0.1",
+    "description" : "Generate Artboards and Convert them to Google Slides",
+    "summary" : "",
+    "languages" : ["en"],
+    "author" : "Indika Wijesooriya",
+    "helpurl" :"",
+    "host": {
+        "app": "XD",
+        "minVersion": "10.0"
+      }, 
+    "uiEntryPoints" : [
+        {
+            "type" : "menu",
+            "label" : "Add a new Line",
+            "commandId" : "createLineCommand"
+        }
+    ]
+}
