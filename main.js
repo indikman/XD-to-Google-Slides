@@ -1,5 +1,5 @@
 // Imports
-const {Line, Color} = require("scenegraph");
+const {Artboard, Line, Color} = require("scenegraph");
 const commands = require("commands");
 
 
@@ -40,8 +40,45 @@ function createLineCommand(selection){
 
 }
 
+function addBlankSlide(selection, documentRoot){
+    let slide = new Artboard();
+
+    slide.width = 1920;
+    slide.height = 1080;
+
+    slide.name = "Blank Slide";
+    slide.fill = new Color("#FFFFFF");
+
+    //try to get all the artboards
+    let artboards = [];
+    documentRoot.children.forEach(node =>{
+        if(node instanceof Artboard){
+            artboards.push(node);
+        }
+    });
+
+    //get the slide in the far right
+    var rightSlideIndex=0;
+    for (var i=0; i<artboards.length; i++){
+        if(artboards[i].globalBounds.x > artboards[rightSlideIndex].globalBounds.x){
+            rightSlideIndex = i;
+        }
+    }
+
+    //get the last slide
+    var yy= artboards[rightSlideIndex].globalBounds.y;
+    var xx = artboards[rightSlideIndex].globalBounds.x + artboards[rightSlideIndex].globalBounds.width + 100;
+
+    slide.moveInParentCoordinates(xx,yy);
+
+    console.log(artboards[rightSlideIndex].name);
+
+    //add slide to workspace
+    selection.editContext.addChild(slide);
+}
+
 module.exports = {
     commands : {
-        createLineCommand
+        addBlankSlide
     }
 };

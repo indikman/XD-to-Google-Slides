@@ -14,8 +14,15 @@
     "uiEntryPoints" : [
         {
             "type" : "menu",
-            "label" : "Add a new Line",
-            "commandId" : "createLineCommand"
+            "label" : "XD to Google Slides",
+            "menuItems":[
+                {
+                    "type":"menu",
+                    "label":"Add a new Slide",
+                    "commandId" : "addBlankSlide"
+                }
+            ]
+            
         }
     ]
 }
